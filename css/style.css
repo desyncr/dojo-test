@@ -21,3 +21,11 @@ html, body {
 	width: 550px;
 	height: 550px;
 }
+
+.header.session {
+    float: right;
+}
+
+.edgePanel.footer {
+    text-align: center;
+}

@@ -46,9 +46,14 @@
 				appLayout.addChild(
 					new dijit.layout.ContentPane({
 						region: "top",
-						"class": "edgePanel",
-						content: "Header content (top)"
-					})
+						"class": "edgePanel"
+					}, "headerContent")
+				)
+				appLayout.addChild(
+					new dijit.layout.ContentPane({
+						region: "bottom",
+						"class": "edgePanel footer"
+					}, "footerContent")
 				)
 				appLayout.addChild(
 					new dijit.layout.ContentPane({
@@ -82,5 +87,14 @@
 			<h4>Starting Content</h4>
 			<button id="createTabBtn">Add another tab</button>
 		</div>
+		<div id="headerContent">
+			<a href="#"><img src="http://placehold.it/350x65"></a>
+            <div class="header session">
+                <a href="#">Logout</a>
+            </div>
+		</div>
+        <div id="footerContent">
+            <a href="#">Footer</a> | <a href="#">Legal</a> | <a href="http://www.gnu.org/philosophy/pragmatic.html">Copyleft!</a>
+        </div>
 	</body>
 </html>
