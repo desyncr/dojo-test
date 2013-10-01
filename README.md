@@ -1,7 +1,7 @@
 dojo-test
 =========
 
-Simple dojo-based app
+Simple dojo-based app: [It's alive!](http://frozen-river-8631.herokuapp.com/)
 
 ![test](https://github.com/desyncr/dojo-test/blob/master/images/dojo.png?raw=true)
 
