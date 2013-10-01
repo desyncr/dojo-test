@@ -8,13 +8,14 @@
 		<link rel="stylesheet" href="css/style.css" media="screen">
 		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dijit/themes/claro/claro.css" media="screen">
 		<!-- load dojo and provide config via data attribute -->
-		<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js">
+		<script src="http://ajax.googleapis.com/ajax/libs/dojo/1.6.1/dojo/dojo.xd.js" djConfig="parseOnLoad: true">
 		</script>
 		<script>
 			dojo.require("dijit.layout.BorderContainer");
 			dojo.require("dijit.layout.ContentPane");
 			dojo.require("dijit.layout.TabContainer");
-
+	        dojo.require('dijit.layout.AccordionContainer');
+            
 			function addTab(name) {
 				var pane = new dijit.layout.ContentPane({
 					title: name,
@@ -24,6 +25,23 @@
 			}
 
 			dojo.ready(function(){
+                 
+                // instantiate the accordeon component
+                var aContainer = new dijit.layout.AccordionContainer({style:"height: 300px"}, "accordeon");
+                aContainer.addChild(new dijit.layout.ContentPane({
+                    title: "This is a content pane",
+                    content: "Hi!"
+                }));
+                aContainer.addChild(new dijit.layout.ContentPane({
+                    title:"This is as well",
+                    content:"Hi!"
+                }));
+                aContainer.addChild(new dijit.layout.ContentPane({
+                    title:"This too",
+                    content:"Hello"
+                }));
+                aContainer.startup();             
+
 				// create the BorderContainer and attach it to our appLayout div
 				var appLayout = new dijit.layout.BorderContainer({
 					design: "headline"
@@ -59,9 +77,8 @@
 					new dijit.layout.ContentPane({
 						region: "left",
 						id: "leftCol", "class": "edgePanel",
-						content: "Sidebar content (left)",
 						splitter: true
-					})
+					}, "sidebarContent")
 				);
 
 				// Add initial content to the TabContainer
@@ -75,7 +92,6 @@
 				dojo.connect(dojo.byId("createTabBtn"), "onclick", function(evt){
 					addTab("Tab " + (++tabCounter));
 				});
-
 				// start up and do layout
 				appLayout.startup();
 			});
@@ -95,6 +111,9 @@
 		</div>
         <div id="footerContent">
             <a href="#">Footer</a> | <a href="#">Legal</a> | <a href="http://www.gnu.org/philosophy/pragmatic.html">Copyleft!</a>
+        </div>
+        <div id="sidebarContent">
+            <div id="accordeon" style="width: 182px; height: 300px"></div>
         </div>
 	</body>
 </html>
